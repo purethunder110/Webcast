@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <!--content loading tagline-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    <body>
+        <!--navebar-->
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+            <div class="container-fluid">
+              <ul class="navbar-nav">
+                <!--navnar image-->
+                <li class="nav-item">
+                    <a class="navbar-brand">
+                        <img src="{{url_for('static',filename='png/icon/logo_size192.png')}}" alt="" width="30" height="24">
+                    </a>
+                </li>
+                <!--navbar links-->
+                {% for i in websites%}
+                    {%if i==title%}
+                        <!--if statement for checking active tab-->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">{{i}}</a>
+                        </li>
+                    {%else%}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{i}}</a>
+                        </li>
+                    {%endif%}
+                {%endfor%}
+              </ul>
+            </div>
+          </nav>
+        </nav> 
+        <!--navebar end-->
+        <!--main body content-->
+        {%block content%}
+        {%endblock%}
+
+        <!--end main body template-->
+    </body>
+</html>
