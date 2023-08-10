@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--type",required=True,help="type of function that you want to execute. web for website and app for application")
 
 def start_server():
-    app.run(host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0',port=5000,debug=True)
 
 if __name__ == '__main__':
     args=parser.parse_args()
