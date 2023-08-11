@@ -1,0 +1,44 @@
+
+{%extends "base.html"%}
+{%block content%}
+  <!--extend base-->
+  <form method="post">
+    <div class="input-group rounded">
+      <input name="search_term" type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </form>
+
+  <!--this will run only if the data is given to it-->
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {%for i in queue%}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{yt_data[i][0]}}" class="card-img-top" >
+        <div class="card-body">
+          <h5 class="card-title">{{yt_data[i][1]}}</h5>
+          <p class="card-text">
+            time-{{yt_data[i][2]}}
+          </p>
+          <p class="card-text">
+            <a href="{{yt_data[i][3]}}">Channel</a>
+          </p>
+          <!--card button-->
+          <form method="post">
+            <div class="input-group">
+              <input type="hidden" value="{{i}}" name="video_id">
+              <button class="btn btn-primary btn-block">
+                add to device
+              </button>
+            </div>
+          </form>
+          <!--end card button-->
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+
+{%endblock%}

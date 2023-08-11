@@ -14,13 +14,16 @@ def homepage():
     return render_template("about.html",title="About",websites=websites)
 
 @app.route('/search',methods=['GET','POST'])
-def searchpage():
-    if request.method=="POST":
+def searchpage(queue=[]):
+    if 'search_term' in request.form:
         #getting the search result
         search_term=request.form['search_term']
         queue=search_vids(search_term)
         #creating YT object for getting title and link etc
         yt_data=id_data_creater(queue)
-        return render_template('about.html',title="Search",websites=websites,yt_data=yt_data,queue=queue)
+        print("is this stuck?")
+        return render_template('search.html',title="Search",websites=websites,yt_data=yt_data,queue=queue)
+    else:
+        print(str(request.form)[-15:-4])
 
-    return render_template('about.html',title="Search",websites=websites)
+    return render_template('search.html',title="Search",websites=websites)
