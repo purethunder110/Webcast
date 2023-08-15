@@ -1,11 +1,11 @@
-from flask import Flask,render_template,request,redirect,url_for
-from ytcast import search_vids,id_data_creater,YouTube
+from flask import Flask,render_template,request,redirect,url_for,make_response
+from ytcast import search_vids,id_data_creater,device_connection_establishment
 
 app=Flask(__name__)
 
 
 queue=[]
-websites=["About","Devices","Search","playlist"]
+websites=["About","Devices","Search"]
 yt_data=dict()
 
 
@@ -17,8 +17,13 @@ def homepage():
     return render_template("about.html",title="About",websites=websites)
 
 
+@app.route('/About')
+def about_redirect():
+    return redirect('/')
+
+
 #search page
-@app.route('/search',methods=['GET','POST'])
+@app.route('/Search',methods=['GET','POST'])
 def searchpage(queue=[]):
     if request.method=='POST':
         if 'search_term' in request.form:
@@ -30,19 +35,24 @@ def searchpage(queue=[]):
             print("is this stuck?")
             return render_template('search.html',title="Search",websites=websites,yt_data=yt_data,queue=queue)
         else:
-            id_selected=str(request.form)[-15:-4]
-            print(id_selected)
-            return redirect(url_for("playlist",id_selected=id_selected))
+            #setting cookies
+            resp=make_response(redirect(url_for("Video")))
+            resp.set_cookie('id_selected',str(request.form)[-15:-4])
+            #id_selected=str(request.form)[-15:-4]
+            #print(id_selected)
+            return resp
         
     return render_template('search.html',title="Search",websites=websites)
 
 
 #devices
-@app.route('/devices',methods=['GET','POST'])
+@app.route('/Devices',methods=['GET','POST'])
 def device():
-    return "hello"
+    device_name=device_connection_establishment()
+    return render_template("device.html",title="Device",websites=websites,device_name=device_name)
 
-@app.route('/playlist',methods=['GET','POST'])
+@app.route('/Video',methods=['GET','POST'])
 def playlist():
-    message=request.args['id_selected']
-    return "<a href=http://youtube.com/watch?v="+message+"> play on youtube</a>"
+    message=str(request.cookies.get('id_selected'))
+    print(message)
+    return render_template('video.html',title="Video",message=message)
