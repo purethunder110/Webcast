@@ -11,7 +11,16 @@
           <h6 class="card-subtitle mb-2 text-muted">{{device_name[i][1]}}</h6>
           <p class="card-text">UUID-{{device_name[i][2]}}</p>
           <p class="card-text">IP-{{device_name[i][3]}}</p>
-          <a href="#" class="card-link">CONNECT</a>
+          <!--code for sending device data-->
+          <form method="post">
+            <div class="input-group">
+              <input type="hidden" value="{{device_name[i][0]}}" name="name_of_device">
+              <button class="btn btn-primary btn-block">
+                CONNECT
+              </button>
+            </div>
+          </form>
+
         </div>
       </div>
 {%endfor%}
