@@ -23,17 +23,15 @@
             time-{{yt_data[i][2]}}
           </p>
           <p class="card-text">
-            <a href="{{yt_data[i][3]}}">Channel</a>
-          </p>
-          <p class="card-text">
-            <a href="http://youtube.com/watch?v={{i}}">video link</a>
+            <a href="{{yt_data[i][3]}}" class="btn btn-outline-primary" target="_blank">Channel</a>
+            <a href="http://youtube.com/watch?v={{i}}" class="btn btn-outline-primary" target="_blank">video link</a>
           </p>
           <!--card button-->
           <form method="post">
             <div class="input-group">
               <input type="hidden" value="{{i}}" name="video_id">
               <button class="btn btn-primary btn-block">
-                add to device
+                play on Device
               </button>
             </div>
           </form>
