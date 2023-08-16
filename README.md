@@ -26,9 +26,9 @@ The program runs using the command
 
 the `--type` argument will accept 2 values `web` and `app`
 
-The web argument will only launch the website on the port 4392, which you can access from the web browser
+The **web** argument will only launch the website on the port 4392, which you can access from the web browser
 
-the app argument will just launch a applcation using webview and will exit on closing the website
+the **app** argument will just launch a application using webview and will exit on closing the website
 
 ___
 
