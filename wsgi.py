@@ -60,6 +60,5 @@ def Video():
     message=request.cookies.get('id_selected')
     name_of_device=request.cookies.get('name_of_device')
     cast_video(name_of_device,message)
-    #return render_template('video.html',message=message)
     resp=make_response(redirect(url_for('searchpage')))
     return resp
