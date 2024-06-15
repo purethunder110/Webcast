@@ -2,7 +2,6 @@
 
 A simple python website to cast any youtube video on the chromecast on the same network
 
-___
 
 ## Installation
 
@@ -16,7 +15,7 @@ the website can also be used as a webapp due to the pywebview package. You do ne
 
 For any requirement problems, you can visit [This website](https://pywebview.flowrl.com/guide/installation.html#dependencies) or can open the issue on github for further assistance.
 
-___
+
 
 ## Running
 
